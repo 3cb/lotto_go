@@ -13,7 +13,7 @@ func main() {
 	r := mux.NewRouter()
 
 	r.HandleFunc("/", HomeHandler)
-	n := negroni.New(negroni.NewStatic(http.Dir("static")))
+	n := negroni.New(negroni.NewStatic(http.Dir("./")))
 	n.UseHandler(r)
 	log.Fatal(http.ListenAndServe(":3000", n))
 }
