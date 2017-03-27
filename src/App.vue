@@ -1,14 +1,23 @@
 <template>
   <div id="app">
+    <el-card class="box-card">
+      <el-tabs v-model="activeName">
+        <el-tab-pane label="MegaMillions" name="first">MegaMillions</el-tab-pane>
+        <el-tab-pane label="Powerball" name="second">Powerball</el-tab-pane>
+      </el-tabs>
+    </el-card>
   </div>
 </template>
 
 <script>
 export default {
   name: 'app',
+  components:{
+    // MegaMillions
+  },
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      activeName: 'first'
     }
   }
 }
