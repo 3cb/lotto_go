@@ -13,8 +13,7 @@ export default {
   },
   data() {
     return {
-      api: 'http://localhost:8080/api/megamillions',
-      radio: '1'
+      api: 'http://localhost:8080/api/megamillions'
     }
   }
 }
