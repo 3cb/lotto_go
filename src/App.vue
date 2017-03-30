@@ -1,19 +1,32 @@
 <template>
   <div id="app">
+    <header class="header"><h1>Lotto</h1></header>
     <el-card class="box-card">
-      <el-tabs v-model="activeName">
-        <el-tab-pane label="MegaMillions" name="first">MegaMillions</el-tab-pane>
-        <el-tab-pane label="Powerball" name="second">Powerball</el-tab-pane>
-      </el-tabs>
+      <div slot="header" class="clearfix">
+        <span style="line-height: 36px;">Mega Millions</span>
+      </div>
+      <div>
+        <mega-millions></mega-millions>
+      </div>
+    </el-card>
+    <el-card class="box-card">
+      <div slot="header" class="clearfix">
+        <span style="line-height: 36px;">Powerball</span>
+      </div>
+      <div>
+      
+      </div>
     </el-card>
   </div>
 </template>
 
 <script>
+import MegaMillions from './components/MegaMillions.vue'
+
 export default {
   name: 'app',
-  components:{
-    // MegaMillions
+  components: {
+    MegaMillions
   },
   data () {
     return {
@@ -28,9 +41,9 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  text-align: left;
   color: #2c3e50;
-  margin-top: 60px;
+  margin: 60px 60px 60px 60px;
 }
 
 h1, h2 {
@@ -50,4 +63,15 @@ li {
 a {
   color: #42b983;
 }
+
+.header {
+  width: 100%;
+  padding: 0%;
+  margin: 0%;
+}
+
+.box-card {
+  margin: 0px 0px 10px 0px;
+}
+
 </style>
