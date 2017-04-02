@@ -25,7 +25,8 @@
                 v-show="showRangeCalendar">
             </el-date-picker>
             <br>
-            <el-button type="primary" icon="search" @click="search">Search</el-button>
+            <el-button type="primary" icon="search" @click="searchSingle" v-show="showSingleCalendar">Search</el-button>
+            <el-button type="primary" icon="search" @click="searchBetween" v-show="showRangeCalendar">Search</el-button>
         </div>
         </el-col>
         <el-col :span="15">
@@ -95,11 +96,27 @@ export default {
         }
     },
     methods: {
-        search() {
-            Vue.axios.get(this.api).then((response) => {
+        searchSingle() {
+            var query = []
+            query.push(this.value1)
+            this.axios.post(this.api, {
+                dates: query
+            }).then(response => {
                 this.tableData = response.data
-            }).catch((error) => {
-                this.errorMsg = error
+            }).catch(error => {
+                this.errorMsg = 'Error retrieving search results.'
+                this.tableData = []
+            })
+        },
+        searchBetween() {
+            var query = this.value1
+            this.axios.post(this.api, {
+                dates: query
+            }).then(response => {
+                this.tableData = response.data
+            }).catch(error => {
+                this.errorMsg = 'Error retrieving search results.'
+                this.tableData = []
             })
         }
     }
