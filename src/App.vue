@@ -14,7 +14,7 @@
         <span style="line-height: 36px;">Powerball</span>
       </div>
       <div>
-      
+        <powerball></powerball>
       </div>
     </el-card>
   </div>
@@ -22,11 +22,13 @@
 
 <script>
 import MegaMillions from './components/MegaMillions.vue'
+import Powerball from './components/Powerball.vue'
 
 export default {
   name: 'app',
   components: {
-    MegaMillions
+    MegaMillions,
+    Powerball
   },
   data () {
     return {

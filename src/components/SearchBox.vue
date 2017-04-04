@@ -36,15 +36,15 @@
                 height="150"
                 style="width: 100%">
                 <el-table-column
-                    prop="date"
+                    prop="draw_date"
                     label="Date">
                 </el-table-column>
                 <el-table-column
-                    prop="numbers"
+                    prop="winning_numbers"
                     label="Numbers">
                 </el-table-column>
                 <el-table-column
-                    prop="ball"
+                    prop="mega_ball"
                     :label="ball">
                 </el-table-column>
                 <el-table-column
@@ -107,9 +107,11 @@ export default {
                 this.errorMsg = 'Error retrieving search results.'
                 this.tableData = []
             })
+            console.log(this.value1)
         },
         searchBetween() {
             var query = this.value1
+            console.log(this.value1)
             this.axios.post(this.api, {
                 dates: query
             }).then(response => {
@@ -121,7 +123,6 @@ export default {
         }
     }
 }
-
 </script>
 
 <style>
