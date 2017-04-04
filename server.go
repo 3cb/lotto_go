@@ -31,7 +31,7 @@ func main() {
 // MegaHandler takes requests for MegaMiilions queries and redirects them to "https://data.ny.gov/resource/h6w8-42p9.json"
 func MegaHandler(w http.ResponseWriter, req *http.Request) {
 	var query *DateQuery
-	var data []Winner
+	var data []WinnerMM
 
 	body, err := ioutil.ReadAll(req.Body)
 	if err != nil {
@@ -40,7 +40,7 @@ func MegaHandler(w http.ResponseWriter, req *http.Request) {
 	if err2 := json.Unmarshal(body, &query); err2 != nil {
 		log.Println(err2)
 	}
-	query.Reformat()
+	query.ReformatMM()
 
 	if len(query.Dates) == 1 {
 		data = getSingle(query)
@@ -55,12 +55,13 @@ func MegaHandler(w http.ResponseWriter, req *http.Request) {
 	w.Write(body)
 }
 
+// PowerballHandler takes requests for Powerball queries and redirects them to "https://data.ny.gov/resource/8vkr-v8vh.json"
 func PowerballHandler(w http.ResponseWriter, req *http.Request) {
 
 }
 
-func getSingle(query *DateQuery) []Winner {
-	var data []Winner
+func getSingle(query *DateQuery) []WinnerMM {
+	var data []WinnerMM
 	api := "https://data.ny.gov/resource/h6w8-42p9.json" + "?draw_date=" + query.Dates[0]
 	log.Println(api)
 	resp, err := http.Get(api)
@@ -79,8 +80,8 @@ func getSingle(query *DateQuery) []Winner {
 	return data
 }
 
-func getRange(query *DateQuery) []Winner {
-	var data []Winner
+func getRange(query *DateQuery) []WinnerMM {
+	var data []WinnerMM
 	api := "https://data.ny.gov/resource/h6w8-42p9.json?$where="
 	queryString := url.QueryEscape("draw_date between '" + query.Dates[0] + "' and '" + query.Dates[1] + "'")
 	resp, err := http.Get(api + queryString)
