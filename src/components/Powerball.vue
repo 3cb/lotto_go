@@ -1,6 +1,6 @@
 <template>
     <div>
-        <search-box ball="Powerball" multiplier="PowerPlay" :api="api"></search-box>
+        <search-box ballLabel="Powerball" multiplier="PowerPlay" ballProp="powerball" :api="api"></search-box>
     </div>
 </template>
 

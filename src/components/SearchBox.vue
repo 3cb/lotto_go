@@ -44,8 +44,8 @@
                     label="Numbers">
                 </el-table-column>
                 <el-table-column
-                    prop="mega_ball"
-                    :label="ball">
+                    :prop="ballProp"
+                    :label="ballLabel">
                 </el-table-column>
                 <el-table-column
                     prop="multiplier"
@@ -62,7 +62,7 @@
 
 <script>
 export default {
-    props: ['api', 'ball', 'multiplier'],
+    props: ['api', 'ballLabel', 'multiplier', 'ballProp'],
     data() {
         return {
             options: [{
@@ -107,11 +107,9 @@ export default {
                 this.errorMsg = 'Error retrieving search results.'
                 this.tableData = []
             })
-            console.log(this.value1)
         },
         searchBetween() {
             var query = this.value1
-            console.log(this.value1)
             this.axios.post(this.api, {
                 dates: query
             }).then(response => {

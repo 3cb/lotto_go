@@ -1,6 +1,6 @@
 <template lang="html">
   <div>
-    <search-box ball="Mega Ball" multiplier="Megaplier" :api="api"></search-box>
+    <search-box ballLabel="Mega Ball" multiplier="Megaplier" ballProp="mega_ball" :api="api"></search-box>
   </div>
 </template>
 
