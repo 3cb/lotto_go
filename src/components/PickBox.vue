@@ -37,7 +37,7 @@
 
 <script>
 export default {
-    props: ['ballProp', 'ballLabel'],
+    props: ['ballLabel'],
     data() {
         return {
             count: 1,
@@ -49,7 +49,7 @@ export default {
             var mult
             var multb
             var nums = []
-            console.log('Inside generatePicks')
+
             if (this.ballLabel === 'Mega Ball') {
                 mult = 75
                 multb = 15
@@ -82,7 +82,6 @@ export default {
         }
     }
 }
-
 </script>
 
 <style>

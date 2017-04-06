@@ -8,6 +8,13 @@
       <el-collapse-item title="Generate Picks" name="2">
         <pick-box ballLabel="Mega Ball"></pick-box>
       </el-collapse-item>
+      <el-collapse-item title="Lottery Info" name="3">
+            <info-box
+              :howLink="howLink"
+              :whereLink="whereLink"
+              :faq="faq">
+            </info-box>
+      </el-collapse-item>
     </el-collapse>
   </el-row>
 </template>
@@ -15,15 +22,20 @@
 <script>
 import SearchBox from './SearchBox.vue'
 import PickBox from './PickBox.vue'
+import InfoBox from './InfoBox.vue'
 
 export default {
   components: {
     SearchBox,
-    PickBox
+    PickBox,
+    InfoBox
   },
   data() {
     return {
-      api: 'http://localhost:8080/api/megamillions'
+      api: 'http://localhost:8080/api/megamillions',
+      howLink: 'http://www.megamillions.com/how-to-play',
+      whereLink: 'http://www.megamillions.com/where-to-play',
+      faq: 'http://www.megamillions.com/faqs'
     }
   }
 }
