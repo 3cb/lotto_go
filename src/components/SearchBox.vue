@@ -23,7 +23,7 @@
                     v-show="showRangeCalendar">
                 </el-date-picker>
                 <br>
-                <el-button type="primary" icon="search" @click="searchSingle" v-show="showSingleCalendar">Search</el-button>
+                <el-button type="primary" icon="search" @click="validateSingleSearch" v-show="showSingleCalendar">Search</el-button>
                 <el-button type="primary" icon="search" @click="searchBetween" v-show="showRangeCalendar">Search</el-button>
             </div>
         </el-col>
@@ -56,6 +56,15 @@
             </el-table>
           </div>
         </el-col>
+        <br>
+        <el-alert
+            title="Error Alert"
+            type="error"
+            :closable="false"
+            :description="alertMessage"
+            show-icon
+            v-show="alertShow">
+        </el-alert>
     </div>
 </template>
 
@@ -75,7 +84,8 @@ export default {
             searchRange: 'Single Day',
             value1: '',
             tableData: [],
-            errorMsg: ''
+            errorMsg: '',
+            alertShow: false
         }
     },
     computed: {
@@ -91,6 +101,13 @@ export default {
                 return true
             } else {
                 return false
+            }
+        },
+        alertMessage: function() {
+            if (this.ballLabel === 'Mega Ball') {
+                return 'Mega Millions is drawn on Tuesdays and Fridays. Please choose another day.'
+            } else {
+                return 'Powerball is drawn on Wednesdays and Saturdays. Please choose another day.'
             }
         }
     },
@@ -117,6 +134,28 @@ export default {
                 this.errorMsg = 'Error retrieving search results.'
                 this.tableData = []
             })
+        },
+        validateSingleSearch() {
+            switch (this.ballLabel) {
+                case 'Mega Ball':
+                    if (this.value1.getDay() === 2 || this.value1.getDay() === 5) {
+                        this.alertShow = false
+                        this.searchSingle()
+                    } else {
+                        this.alertShow = true
+                        this.tableData = []
+                    }
+                    break
+                case 'Powerball':
+                    if (this.value1.getDay() === 3 || this.value1.getDay() === 6) {
+                        this.alertShow = false
+                        this.searchSingle()
+                    } else {
+                        this.alertShow = true
+                        this.tableData = []
+                    }
+                    break
+            }
         }
     }
 }
@@ -125,5 +164,9 @@ export default {
 <style>
     .el-select, .el-date-picker, .el-button {
         margin: 3px 0px 3px 0px;
+    }
+    .el-alert {
+        margin: 3px;
+        padding: 3px;
     }
 </style>
