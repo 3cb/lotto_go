@@ -30,7 +30,7 @@
         <el-col :span="15">
           <div class="block">
             <el-table
-                :data="tableData"
+                :data="formattedData"
                 height="150"
                 style="width: 100%">
                 <el-table-column
@@ -108,6 +108,23 @@ export default {
                 return 'Mega Millions is drawn on Tuesdays and Fridays. Please choose another day.'
             } else {
                 return 'Powerball is drawn on Wednesdays and Saturdays. Please choose another day.'
+            }
+        },
+        formattedData: function() {
+            var temp = []
+
+            if (this.tableData.length === 0) {
+                return temp
+            } else {
+                temp = this.tableData.map(x => {
+                    let z = x["draw_date"].slice(0, 10)
+                    let y = z.split('-')
+                    y.push(y.shift())
+                    x["draw_date"] = y.join('-')
+                    return x
+                })
+                console.log(temp)
+                return temp
             }
         }
     },
