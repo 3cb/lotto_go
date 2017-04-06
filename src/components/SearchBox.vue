@@ -1,33 +1,31 @@
 <template>
-  <el-row>
-    <el-collapse accordion>
-      <el-collapse-item title="Search Winners" name="1">
+    <div>
         <el-col :span="9">
-        <div class="block grid-content">
-            <el-select v-model="searchRange" placeholder="Select Search Type">
-                <el-option
-                    v-for="item in options"
-                    :label="item.label"
-                    :value="item.value">
-                </el-option>
-            </el-select>
-            <br>
-            <el-date-picker
-                v-model="value1"
-                type="date"
-                placeholder="Pick a Day"
-                v-show="showSingleCalendar">
-            </el-date-picker>
-            <el-date-picker
-                v-model="value1"
-                type="daterange"
-                placeholder="Pick a Range"
-                v-show="showRangeCalendar">
-            </el-date-picker>
-            <br>
-            <el-button type="primary" icon="search" @click="searchSingle" v-show="showSingleCalendar">Search</el-button>
-            <el-button type="primary" icon="search" @click="searchBetween" v-show="showRangeCalendar">Search</el-button>
-        </div>
+            <div class="block grid-content">
+                <el-select v-model="searchRange" placeholder="Select Search Type">
+                    <el-option
+                        v-for="item in options"
+                        :label="item.label"
+                        :value="item.value">
+                    </el-option>
+                </el-select>
+                <br>
+                <el-date-picker
+                    v-model="value1"
+                    type="date"
+                    placeholder="Pick a Day"
+                    v-show="showSingleCalendar">
+                </el-date-picker>
+                <el-date-picker
+                    v-model="value1"
+                    type="daterange"
+                    placeholder="Pick a Range"
+                    v-show="showRangeCalendar">
+                </el-date-picker>
+                <br>
+                <el-button type="primary" icon="search" @click="searchSingle" v-show="showSingleCalendar">Search</el-button>
+                <el-button type="primary" icon="search" @click="searchBetween" v-show="showRangeCalendar">Search</el-button>
+            </div>
         </el-col>
         <el-col :span="15">
           <div class="block">
@@ -37,27 +35,28 @@
                 style="width: 100%">
                 <el-table-column
                     prop="draw_date"
-                    label="Date">
+                    label="Date"
+                    align="center">
                 </el-table-column>
                 <el-table-column
                     prop="winning_numbers"
-                    label="Numbers">
+                    label="Numbers"
+                    align="center">
                 </el-table-column>
                 <el-table-column
                     :prop="ballProp"
-                    :label="ballLabel">
+                    :label="ballLabel"
+                    align="center">
                 </el-table-column>
                 <el-table-column
                     prop="multiplier"
-                    :label="multiplier">
+                    :label="multiplier"
+                    align="center">
                 </el-table-column>
             </el-table>
           </div>
         </el-col>
-      </el-collapse-item>
-    </el-collapse>
-  </el-row>
-
+    </div>
 </template>
 
 <script>
