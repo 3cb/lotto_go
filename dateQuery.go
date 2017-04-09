@@ -1,6 +1,9 @@
 package main
 
 import (
+	"encoding/json"
+	"io"
+	"io/ioutil"
 	"strings"
 )
 
@@ -14,4 +17,15 @@ func (query *DateQuery) Reformat() {
 		temp = append(temp[0:1], "T00:00:00.000")
 		query.Dates[i] = strings.Join(temp, "")
 	}
+}
+
+func body2Struct(r io.Reader, v interface{}) error {
+	body, err := ioutil.ReadAll(r)
+	if err != nil {
+		return err
+	}
+	if err2 := json.Unmarshal(body, v); err2 != nil {
+		return err2
+	}
+	return nil
 }
