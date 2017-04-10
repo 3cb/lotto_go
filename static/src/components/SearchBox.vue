@@ -123,7 +123,6 @@ export default {
                     x["draw_date"] = y.join('-')
                     return x
                 })
-                console.log(temp)
                 return temp
             }
         }
