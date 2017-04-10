@@ -32,7 +32,7 @@ export default {
   },
   data() {
     return {
-      api: 'http://localhost:8080/api/megamillions',
+      api: 'http://localhost:3000/api/megamillions',
       howLink: 'http://www.megamillions.com/how-to-play',
       whereLink: 'http://www.megamillions.com/where-to-play',
       faq: 'http://www.megamillions.com/faqs'
