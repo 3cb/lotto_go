@@ -7,10 +7,12 @@ import (
 	"strings"
 )
 
+// DateQuery contains date(s) for Socrata API query
 type DateQuery struct {
 	Dates []string `json:"dates"`
 }
 
+// Reformat reformats date object so it suits Socrata API
 func (query *DateQuery) Reformat() {
 	for i, v := range query.Dates {
 		temp := strings.Split(v, "T")
