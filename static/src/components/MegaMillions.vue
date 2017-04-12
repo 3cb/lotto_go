@@ -32,12 +32,19 @@ export default {
   },
   data() {
     return {
-      api: 'http://localhost:3000/api/megamillions',
+      api: 'https://45.79.150.247:3000/api/megamillions',
       howLink: 'http://www.megamillions.com/how-to-play',
       whereLink: 'http://www.megamillions.com/where-to-play',
       faq: 'http://www.megamillions.com/faqs'
     }
   }
+  // computer: {
+  //   api: function() {
+  //     if (process.env.NODE_ENV === 'production') {
+  //       return 'http://localhost:3000/api/megamillions'
+  //     }
+  //   }
+  // }
 }
 </script>
 
