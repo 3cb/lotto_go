@@ -16,5 +16,5 @@ func main() {
 
 	n := negroni.New(negroni.NewStatic(http.Dir("./static/")))
 	n.UseHandler(r)
-	log.Fatal(http.ListenAndServe(":3000", n))
+	log.Fatal(http.ListenAndServe(":80", n))
 }
