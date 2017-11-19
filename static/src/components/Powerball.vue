@@ -32,7 +32,7 @@ export default {
     },
     data() {
         return {
-            api: 'http://45.79.150.247:3000/api/powerball',
+            api: '/api/powerball',
             howLink: 'http://www.powerball.com/powerball/pb_howtoplay.asp',
             whereLink: 'http://www.powerball.com/powerball/pb_map.asp',
             faq: 'http://www.powerball.com/pb_contact.asp'
