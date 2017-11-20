@@ -39,6 +39,12 @@ export default {
 </script>
 
 <style>
+#app {
+  position: absolute;
+  top: 10%;
+  left: 25%;
+  width: 50%;
+}
 .header {
   width: 100%;
   padding: 0%;
