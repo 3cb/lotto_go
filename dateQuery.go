@@ -26,7 +26,8 @@ func body2Struct(r io.Reader, v interface{}) error {
 	if err != nil {
 		return err
 	}
-	if err2 := json.Unmarshal(body, v); err2 != nil {
+	err2 := json.Unmarshal(body, v)
+	if err2 != nil {
 		return err2
 	}
 	return nil
