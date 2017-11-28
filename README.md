@@ -1,8 +1,8 @@
 # lotto_go
-
-> A Vue.js project
+An app that allows you to check winning lottery numbers as well as make picks.  Built with Vue and a Go backend.
 
 ## Build Setup
+> From static folder:
 
 ``` bash
 # install dependencies
@@ -15,4 +15,3 @@ npm run dev
 npm run build
 ```
 
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
